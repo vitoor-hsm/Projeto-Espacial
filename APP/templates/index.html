@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gerenciamento de Expedição Espacial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        form {
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+
+        form input[type="text"],
+        form input[type="date"],
+        form input[type="datetime"],
+        form input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin: 5px 0;
+        }
+
+        form input[type="submit"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Sistema de Gerenciamento de Expedição Espacial</h1>
+
+    <!-- Formulário para adicionar nova missão -->
+    <form id="addMissionForm" method="post">
+        <h2>Adicionar Nova Missão</h2>
+        <input type="text" name="missionName" placeholder="Nome da Missão" required><br>
+        <input type="date" name="launchDate" required><br>
+        <input type="text" name="destination" placeholder="Destino" required><br>
+        <input type="text" name="mission_status" placeholder="Estado da Missão" required><br>
+        <input type="text" name="crew" placeholder="Tripulação" required><br>
+        <input type="text" name="payload" placeholder="Carga Útil" required><br>
+        <input type="datetime" name="mission_duration" placeholder="Duração da Missão" required><br>
+        <input type="number" name="mission_cost" placeholder="Custo da Missão" required><br>
+        <input type="text" name="mission_report" placeholder="Status da Missão" required><br>
+        <input type="submit" name="Adicionar Missão">
+    </form>
+
+    <!-- Tabela para listar missões -->
+    <h2>Lista de Missões</h2>
+    <table id="missionTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome da Missão</th>
+                <th>Data de Lançamento</th>
+                <th>Destino</th>
+                <th>Estado da Missão</th>
+                <th>Tripulação</th>
+                <th>Carga Útil</th>
+                <th>Duração da Missão</th>
+                <th>Custo da Missão</th>
+                <th>Status da Missão</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- As missões serão preenchidas dinamicamente aqui -->
+            {% for missao in missoes %}
+            <tr>
+                <td>{{missao.id}}</td>
+                <td>{{missao.name_mission}}</td>
+                <td>{{missao.date_launch}}</td>
+                <td>{{missao.destiny}}</td>
+                <td>{{missao.mission_status}}</td>
+                <td>{{missao.crew}}</td>
+                <td>{{missao.charge}}</td>
+                <td>{{missao.mission_duration}}</td>
+                <td>{{missao.mission_cost}}</td>
+                <td>{{missao.mission_report}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
